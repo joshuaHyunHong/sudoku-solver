@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+</head>
+
+<body>
+    <script type="text/javascript" src="main.js"></script>
+
+    <div>
+
+        <p>Simply looks at each unsolved cell and determines all possible answers
+            for each cell. For instance, if a cell has 123 then the cell answer could
+            be a 1 or a 2 or a 3. Achieves this by looking at cell values in the same row,
+            column, and box.
+            <br><br>
+            Let's say that there's a box with cell 123 and another cell of just 3. The 3 ought to not
+            exist since there can't possibly be another 3 in the same box. What has happened here is that
+            the code indirectly solved for that cell and has not yet registered that 3 in the box, so simply
+            press the button again and the 123 should become a 12. It may help to press the button multiple times
+            every time you solve a cell, as the code may indirectly solve some additional cells for you.
+            <br><br>
+            Please
+            note that this solver isn't meant to automatically solve sudokus since I made
+            this with the intent of solving HARD sudokus that force you to utilize varrying
+            advanced techniques and some guess-work.
+        </p>
+        <button onclick="solve()" id="solve">SOLVE</button>
+    </div>
+
+    <div class="row">
+        <div id="box1">
+            <input id="1">
+            <input id="2">
+            <input id="3" value="">
+
+            <input id="10">
+            <input id="11">
+            <input id="12" value="">
+
+            <input id="19" value="">
+            <input id="20" value="">
+            <input id="21">
+        </div>
+
+
+
+
+        <div id="box2">
+            <input id="4" value="">
+            <input id="5" value="">
+            <input id="6" value="">
+            <input id="13">
+            <input id="14">
+            <input id="15" value="">
+            <input id="22">
+            <input id="23" value="">
+            <input id="24">
+        </div>
+
+        <div id="box3">
+            <input id="7">
+            <input id="8">
+            <input id="9">
+            <input id="16">
+            <input id="17">
+            <input id="18">
+            <input id="25">
+            <input id="26" value="">
+            <input id="27">
+        </div>
+
+
+
+    </div>
+
+    <!--  -->
+    <div class="row">
+        <div id="box4">
+            <input id="28" value="">
+            <input id="29">
+            <input id="30">
+
+            <input id="37">
+            <input id="38">
+            <input id="39">
+
+            <input id="46" value="">
+            <input id="47" value="">
+            <input id="48">
+        </div>
+
+
+        <div id="box5">
+            <input id="31">
+            <input id="32" value="">
+            <input id="33">
+
+            <input id="40" value="">
+            <input id="41" value="">
+            <input id="42" value="">
+
+            <input id="49">
+            <input id="50" value="">
+            <input id="51">
+        </div>
+
+        <div id="box6">
+            <input id="34">
+            <input id="35" value="">
+            <input id="36" value="">
+
+            <input id="43">
+            <input id="44">
+            <input id="45">
+
+            <input id="52">
+            <input id="53">
+            <input id="54" value="">
+        </div>
+
+    </div>
+
+    <!--  -->
+
+    <div class="row">
+        <div id="box7">
+            <input id="55">
+            <input id="56" value="">
+            <input id="57">
+
+            <input id="64">
+            <input id="65">
+            <input id="66">
+
+            <input id="73">
+            <input id="74">
+            <input id="75">
+        </div>
+
+
+        <div id="box8">
+            <input id="58">
+            <input id="59" value="">
+            <input id="60">
+
+            <input id="67" value="">
+            <input id="68">
+            <input id="69">
+
+            <input id="76" value="">
+            <input id="77" value="">
+            <input id="78" value="">
+        </div>
+
+
+        <div id="box9">
+            <input id="61">
+            <input id="62" value="">
+            <input id="63" value="">
+
+            <input id="70" value="">
+            <input id="71">
+            <input id="72">
+
+            <input id="79" value="">
+            <input id="80">
+            <input id="81">
+        </div>
+    </div>
+
+</body>
+
+<style>
+    #solve{
+        border: black solid 3px;
+        border-radius: 10px;
+        background-color: cadetblue;
+        width: 100px;
+        height: 25px;
+        margin: 10px;
+    }
+    #solve:hover{
+        background-color: aqua;
+    }
+
+    input {
+        width: 50px;
+        height: 25px;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .row {
+        display: flex;
+        /* margin: 5px; */
+    }
+
+    #box1 {
+        display: flex;
+        flex-wrap: wrap;
+        background-color: aqua;
+        width: 170px;
+        height: 90px;
+        align-content: center;
+        justify-content: center;
+    }
+
+    #box2 {
+        display: flex;
+        flex-wrap: wrap;
+        background-color: chartreuse;
+        width: 170px;
+        height: 90px;
+        align-content: center;
+        justify-content: center;
+    }
+
+    #box3 {
+        display: flex;
+        flex-wrap: wrap;
+        background-color: aqua;
+        width: 170px;
+        height: 90px;
+        align-content: center;
+        justify-content: center;
+    }
+
+    #box4 {
+        display: flex;
+        flex-wrap: wrap;
+        background-color: chartreuse;
+        width: 170px;
+        height: 90px;
+        align-content: center;
+        justify-content: center;
+        /* border: black solid 2px; */
+
+    }
+
+    #box5 {
+        display: flex;
+        flex-wrap: wrap;
+        background-color: aqua;
+        width: 170px;
+        height: 90px;
+        align-content: center;
+        justify-content: center;
+    }
+
+    #box6 {
+        display: flex;
+        flex-wrap: wrap;
+        background-color: chartreuse;
+        width: 170px;
+        height: 90px;
+        align-content: center;
+        justify-content: center;
+        /* border: black solid 2px; */
+    }
+
+    #box7 {
+        display: flex;
+        flex-wrap: wrap;
+        background-color: aqua;
+        width: 170px;
+        height: 90px;
+        align-content: center;
+        justify-content: center;
+    }
+
+    #box8 {
+        display: flex;
+        flex-wrap: wrap;
+        background-color: chartreuse;
+        width: 170px;
+        height: 90px;
+        align-content: center;
+        justify-content: center;
+        /* border: black solid 2px; */
+    }
+
+    #box9 {
+        display: flex;
+        flex-wrap: wrap;
+        background-color: aqua;
+        width: 170px;
+        height: 90px;
+        align-content: center;
+        justify-content: center;
+    }
+</style>
+
+</html>
